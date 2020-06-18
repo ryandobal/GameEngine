@@ -1,4 +1,4 @@
-#include "Engine.h"
+#include "include/Engine.h"
 
 
 Engine::Engine(void) {
@@ -36,5 +36,11 @@ void Engine::Update() {
 		}
 	}
 
+	world->tick(10.f);
+}
 
+void Engine::AddSystem(ECS::EntitySystem* newSys) {
+	// Allow our Engine system to interact with ECS
+	world->registerSystem(newSys);
+	world->enableSystem(newSys);
 }
